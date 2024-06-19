@@ -37,7 +37,9 @@
 </head>
 
 <body>
+
     <div class="wrapper">
+
         <!-- Sidebar -->
         <div class="sidebar" data-background-color="dark">
             <div class="sidebar-logo">
@@ -77,12 +79,21 @@
                                 </ul>
                             </div>
                         </li>
-
                         <li class="nav-item">
-                            <a href="./panding_requests.html">
+                            <a data-bs-toggle="collapse" href="#base">
                                 <i class="fas fa-globe"></i>
                                 <p>Domains</p>
+                                <span class="caret"></span>
                             </a>
+                            <div class="collapse" id="base">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="<?php echo base_url('pubroute_controller/domains/') ?>">
+                                            <span class="sub-item">example.com</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
 
                         <li class="nav-item">
@@ -169,14 +180,16 @@
                                                 </div>
                                                 <div class="u-text">
                                                     <h4>Hizrian</h4>
-                                                    <p class="text-muted">1234567</p>
+                                                    <p class="text-muted">ID = 1234567</p>
 
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="<?php echo base_url('pubroute_controller/profile/') ?>">View Profile</a>
+                                            <a class="dropdown-item"
+                                                href="<?php echo base_url('pubroute_controller/profile/') ?>">View
+                                                Profile</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="#">Logout</a>
                                         </li>
@@ -189,180 +202,91 @@
                 <!-- End Navbar -->
             </div>
             <div class="container">
-                <div class="mainheading">
-                    <h2>Enter Your Bank Details</h2>
+                <div class="Domandata" style="text-align:center;">
+                    <h1>Domain Data</h1>
                 </div>
-                <div class="form">
-                    <form id="bankDetailsForm" action="" method="post" enctype="multipart/form-data">
-                        <!-- Organization Type -->
-                        <div class="form-group">
-                            <label for="orgType">Organization Type:</label>
-                            <select id="orgType" name="orgType" required>
-                                <option value="">Select Organization Type</option>
-                                <option value="Company">Company</option>
-                                <option value="Individual">Individual</option>
-                            </select>
-                        </div>
+                <table style="width:98%; margin:auto;">
+                    <tr>
+                        <th>ID</th>
+                        <th>Publisher ID</th>
+                        <th>Domain</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>publisher123</td>
+                        <td>1. example.com,<br>2. anotherdomain.com,<br> 3. viral.com</td>
 
-                        <!-- Country -->
-                        <div class="form-group">
-                            <label for="country">Country:</label>
-                            <select id="country" name="country" required>
-                                <option value="">Select a country</option>
-                                <!-- Add more country options as needed -->
-                                <option value="USA">USA</option>
-                                <option value="India">India</option>
-                                <option value="UK">UK</option>
-                            </select>
-                        </div>
-
-                        <!-- Address -->
-                        <div class="form-group">
-                            <label for="address">Address:</label>
-                            <input type="text" id="address" name="address" required>
-                        </div>
-
-                        <!-- City and Zip Code -->
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="city">City:</label>
-                                <input type="text" id="city" name="city" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="zipCode">Zip Code:</label>
-                                <input type="text" id="zipCode" name="zipCode" required>
-                            </div>
-                        </div>
-
-                        <!-- Name -->
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-
-                        <!-- Bank Name -->
-                        <div class="form-group">
-                            <label for="bankName">Bank Name:</label>
-                            <input type="text" id="bankName" name="bankName" required>
-                        </div>
-
-                        <!-- Account Number and Confirm Account Number -->
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="accountNumber">Account Number:</label>
-                                <input type="text" id="accountNumber" name="accountNumber" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="confirmAccountNumber">Confirm Account Number:</label>
-                                <input type="text" id="confirmAccountNumber" name="confirmAccountNumber" required>
-                            </div>
-                        </div>
-
-                        <!-- Bank Account Type -->
-                        <div class="form-group">
-                            <label for="accountType">Bank Account Type:</label>
-                            <select id="accountType" name="accountType" required>
-                                <option value="">Choose Account Type</option>
-                                <option value="saving">Saving</option>
-                                <option value="current">Current</option>
-                            </select>
-                        </div>
-
-                        <!-- Pan Card Number -->
-                        <div class="form-group">
-                            <label for="panCardNumber">Pan Card Number:</label>
-                            <input type="text" id="panCardNumber" name="panCardNumber" required>
-                        </div>
-
-                        <!-- Are you GST Registered? -->
-                        <div class="form-group">
-                            <label>Are you GST Registered?</label>
-                            <div class="flex-container">
-                                <input type="radio" id="gstYes" name="gstRegistered" value="yes" required>
-                                <label for="gstYes">Yes</label>
-                                <input type="radio" id="gstNo" name="gstRegistered" value="no" required>
-                                <label for="gstNo">No</label>
-                            </div>
-                        </div>
-
-                        <!-- GST Number or Upload Documents -->
-                        <div class="form-group" id="gstDetails">
-                            <!-- This will be dynamically filled based on GST registration status -->
-                        </div>
-
-                        <!-- Pan Card - File Upload -->
-                        <div class="form-group">
-                            <label for="panCardFile">Pan Card:</label>
-                            <input type="file" id="panCardFile" name="panCardFile" required>
-                        </div>
-                        <div class="form-group submitbtn">
-                            <button type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>publisher456</td>
+                        <td>anotherdomain.com</td>
+                    </tr>
+                </table>
             </div>
+        </div>
 
-            <!-- Bootstrap JS and dependencies -->
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    // Function to allow only numbers (integers) in the input fields
-                    function restrictToNumbers(event) {
-                        const input = event.target;
-                        input.value = input.value.replace(/\D/g, ''); // Replace non-digit characters with empty string
-                    }
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Function to allow only numbers (integers) in the input fields
+                function restrictToNumbers(event) {
+                    const input = event.target;
+                    input.value = input.value.replace(/\D/g, ''); // Replace non-digit characters with empty string
+                }
 
-                    // Selecting the input fields that need numeric validation
-                    const zipCodeField = document.getElementById('zipCode');
-                    const accountNumberField = document.getElementById('accountNumber');
-                    const confirmAccountNumberField = document.getElementById('confirmAccountNumber');
+                // Selecting the input fields that need numeric validation
+                const zipCodeField = document.getElementById('zipCode');
+                const accountNumberField = document.getElementById('accountNumber');
+                const confirmAccountNumberField = document.getElementById('confirmAccountNumber');
 
-                    // Attaching event listeners to the input fields
-                    zipCodeField.addEventListener('input', restrictToNumbers);
-                    accountNumberField.addEventListener('input', restrictToNumbers);
-                    confirmAccountNumberField.addEventListener('input', restrictToNumbers);
+                // Attaching event listeners to the input fields
+                zipCodeField.addEventListener('input', restrictToNumbers);
+                accountNumberField.addEventListener('input', restrictToNumbers);
+                confirmAccountNumberField.addEventListener('input', restrictToNumbers);
 
-                    // Adjusting labels if "number" is entered instead of "type"
-                    const orgTypeLabel = document.querySelector('label[for="orgType"]');
-                    orgTypeLabel.textContent = "Organization Number:";
+                // Adjusting labels if "number" is entered instead of "type"
+                const orgTypeLabel = document.querySelector('label[for="orgType"]');
+                orgTypeLabel.textContent = "Organization Number:";
 
-                    const accountTypeLabel = document.querySelector('label[for="accountType"]');
-                    accountTypeLabel.textContent = "Bank Account Number Type:";
-                });
-            </script>
+                const accountTypeLabel = document.querySelector('label[for="accountType"]');
+                accountTypeLabel.textContent = "Bank Account Number Type:";
+            });
+        </script>
 
-            <script>
-                // JavaScript to handle GST registration details
-                document.addEventListener('DOMContentLoaded', function () {
-                    const gstDetails = document.getElementById('gstDetails');
-                    const gstYes = document.getElementById('gstYes');
-                    const gstNo = document.getElementById('gstNo');
+        <script>
+            // JavaScript to handle GST registration details
+            document.addEventListener('DOMContentLoaded', function () {
+                const gstDetails = document.getElementById('gstDetails');
+                const gstYes = document.getElementById('gstYes');
+                const gstNo = document.getElementById('gstNo');
 
-                    gstYes.addEventListener('change', function () {
-                        if (gstYes.checked) {
-                            gstDetails.innerHTML = `
+                gstYes.addEventListener('change', function () {
+                    if (gstYes.checked) {
+                        gstDetails.innerHTML = `
                         <label for="gstNumber">GST Number:</label>
                         <input type="text" id="gstNumber" name="gstNumber" required>
                     `;
-                        }
-                    });
+                    }
+                });
 
-                    gstNo.addEventListener('change', function () {
-                        if (gstNo.checked) {
-                            gstDetails.innerHTML = `
+                gstNo.addEventListener('change', function () {
+                    if (gstNo.checked) {
+                        gstDetails.innerHTML = `
                         
                     `;
-                        }
-                    });
+                    }
                 });
-            </script>
-            <!-- Custom template | don't include it in your project! -->
+            });
+        </script>
+        <!-- Custom template | don't include it in your project! -->
 
-            <!-- End Custom template -->
-        </div>
+        <!-- End Custom template -->
+    </div>
     </div>
     <script src="<?php echo base_url('assets/js/core/jquery-3.7.1.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/core/popper.min.js') ?>"></script>
@@ -383,8 +307,7 @@
     <!-- Datatables -->
     <script src="<?php echo base_url('assets/js/plugin/datatables/datatables.min.js') ?>"></script>
 
-    <!-- Bootstrap Notify -->
-    <script src="<?php echo base_url('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') ?>"></script>
+
 
     <!-- jQuery Vector Maps -->
     <script src="<?php echo base_url('assets/js/plugin/jsvectormap/jsvectormap.min.js') ?>"></script>

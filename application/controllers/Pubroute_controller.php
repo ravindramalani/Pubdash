@@ -68,7 +68,22 @@ class Pubroute_controller extends CI_Controller {
  public function bank(){
     $this->load->view('bankdetails');
  }
+ public function profile(){
+    $this->load->view('profilepage');
+ }
 
+// 19.06.2024 .........
 
+public function property(){
+    $this->load->view('createproperty');
+}
+
+public function asigndomain(){
+    $this->load->view('asigndomain');
+}
+
+public function domains(){
+    $this->load->view('domains');
+}
 }
 ?>

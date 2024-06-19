@@ -37,7 +37,25 @@
 </head>
 
 <body>
+<div id="passwordChangePopup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <h2>Change Password</h2>
+                <form id="passwordChangeForm">
+                    <div class="form-group">
+                        <label for="oldPassword">Old Password:</label>
+                        <input type="password" id="oldPassword" name="oldPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" id="newPassword" name="newPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
     <div class="wrapper">
+       
         <!-- Sidebar -->
         <div class="sidebar" data-background-color="dark">
             <div class="sidebar-logo">
@@ -79,7 +97,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="./panding_requests.html">
+                            <a href="<?php echo base_url('pubroute_controller/domains/') ?>">
                                 <i class="fas fa-globe"></i>
                                 <p>Domains</p>
                             </a>
@@ -169,14 +187,16 @@
                                                 </div>
                                                 <div class="u-text">
                                                     <h4>Hizrian</h4>
-                                                    <p class="text-muted">1234567</p>
+                                                    <p class="text-muted">ID = 1234567</p>
 
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="<?php echo base_url('pubroute_controller/profile/') ?>">View Profile</a>
+                                            <a class="dropdown-item"
+                                                href="<?php echo base_url('pubroute_controller/profile/') ?>">View
+                                                Profile</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="#">Logout</a>
                                         </li>
@@ -189,116 +209,82 @@
                 <!-- End Navbar -->
             </div>
             <div class="container">
-                <div class="mainheading">
-                    <h2>Enter Your Bank Details</h2>
-                </div>
-                <div class="form">
-                    <form id="bankDetailsForm" action="" method="post" enctype="multipart/form-data">
-                        <!-- Organization Type -->
-                        <div class="form-group">
-                            <label for="orgType">Organization Type:</label>
-                            <select id="orgType" name="orgType" required>
-                                <option value="">Select Organization Type</option>
-                                <option value="Company">Company</option>
-                                <option value="Individual">Individual</option>
-                            </select>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="userprofile">
+                            <img src="<?php echo base_url('assets/img/profile.jpg') ?>" alt="image profile"
+                                class="profileimg rounded" />
                         </div>
+                    </div>
+                    <div class="col-lg-8 ">
+                        <h1 class="userheading">User Profile</h1>
+                        <div class="userdetails">
+                            <p>Name: John Doe</p>
+                            <p>Email: johndoe@example.com</p>
+                            <p>Phone No: +1234567890</p>
+                            <p>Publisher ID: PUB123</p>
+                            <button id="changePasswordBtn">Change Password</button>
+                        </div>
+                    </div>
 
-                        <!-- Country -->
-                        <div class="form-group">
-                            <label for="country">Country:</label>
-                            <select id="country" name="country" required>
-                                <option value="">Select a country</option>
-                                <!-- Add more country options as needed -->
-                                <option value="USA">USA</option>
-                                <option value="India">India</option>
-                                <option value="UK">UK</option>
-                            </select>
-                        </div>
+                    <!-- Password Change Popup -->
 
-                        <!-- Address -->
-                        <div class="form-group">
-                            <label for="address">Address:</label>
-                            <input type="text" id="address" name="address" required>
-                        </div>
 
-                        <!-- City and Zip Code -->
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="city">City:</label>
-                                <input type="text" id="city" name="city" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="zipCode">Zip Code:</label>
-                                <input type="text" id="zipCode" name="zipCode" required>
-                            </div>
-                        </div>
+                    <script>
+                        // Get the password change button and popup
+                        var changePasswordBtn = document.getElementById("changePasswordBtn");
+                        var passwordChangePopup = document.getElementById("passwordChangePopup");
 
-                        <!-- Name -->
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
+                        // When the user clicks the button, open the popup
+                        changePasswordBtn.onclick = function () {
+                            passwordChangePopup.style.display = "flex";
+                        }
 
-                        <!-- Bank Name -->
-                        <div class="form-group">
-                            <label for="bankName">Bank Name:</label>
-                            <input type="text" id="bankName" name="bankName" required>
-                        </div>
+                        // Close the popup when the user clicks on the close button or outside the popup
+                        var popupClose = document.querySelector(".close");
+                        window.onclick = function (event) {
+                            if (event.target == passwordChangePopup || event.target == popupClose) {
+                                passwordChangePopup.style.display = "none";
+                            }
+                        }
 
-                        <!-- Account Number and Confirm Account Number -->
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="accountNumber">Account Number:</label>
-                                <input type="text" id="accountNumber" name="accountNumber" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="confirmAccountNumber">Confirm Account Number:</label>
-                                <input type="text" id="confirmAccountNumber" name="confirmAccountNumber" required>
-                            </div>
-                        </div>
+                        // Handle form submission
+                        var passwordChangeForm = document.getElementById("passwordChangeForm");
+                        passwordChangeForm.onsubmit = function (event) {
+                            event.preventDefault(); // Prevent default form submission
 
-                        <!-- Bank Account Type -->
-                        <div class="form-group">
-                            <label for="accountType">Bank Account Type:</label>
-                            <select id="accountType" name="accountType" required>
-                                <option value="">Choose Account Type</option>
-                                <option value="saving">Saving</option>
-                                <option value="current">Current</option>
-                            </select>
-                        </div>
+                            // Get values from form fields
+                            var oldPassword = document.getElementById("oldPassword").value;
+                            var newPassword = document.getElementById("newPassword").value;
 
-                        <!-- Pan Card Number -->
-                        <div class="form-group">
-                            <label for="panCardNumber">Pan Card Number:</label>
-                            <input type="text" id="panCardNumber" name="panCardNumber" required>
-                        </div>
+                            // Perform validation and submit logic here
+                            console.log("Old Password: ", oldPassword);
+                            console.log("New Password: ", newPassword);
 
-                        <!-- Are you GST Registered? -->
-                        <div class="form-group">
-                            <label>Are you GST Registered?</label>
-                            <div class="flex-container">
-                                <input type="radio" id="gstYes" name="gstRegistered" value="yes" required>
-                                <label for="gstYes">Yes</label>
-                                <input type="radio" id="gstNo" name="gstRegistered" value="no" required>
-                                <label for="gstNo">No</label>
-                            </div>
-                        </div>
+                            // Optionally, you can send an AJAX request to a server-side endpoint to update the password
+                            // Example AJAX request (using fetch API)
+                            /*
+                            fetch('/change-password-endpoint', {
+                                method: 'POST',
+                                body: JSON.stringify({ oldPassword: oldPassword, newPassword: newPassword }),
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            }).then(response => {
+                                // Handle response
+                                console.log(response);
+                            }).catch(error => {
+                                console.error('Error:', error);
+                            });
+                            */
 
-                        <!-- GST Number or Upload Documents -->
-                        <div class="form-group" id="gstDetails">
-                            <!-- This will be dynamically filled based on GST registration status -->
-                        </div>
+                            // Close the popup after handling form submission
+                            passwordChangePopup.style.display = "none";
+                            // Clear form fields for security reasons
+                            passwordChangeForm.reset();
+                        }
+                    </script>
 
-                        <!-- Pan Card - File Upload -->
-                        <div class="form-group">
-                            <label for="panCardFile">Pan Card:</label>
-                            <input type="file" id="panCardFile" name="panCardFile" required>
-                        </div>
-                        <div class="form-group submitbtn">
-                            <button type="submit">Submit</button>
-                        </div>
-                    </form>
                 </div>
             </div>
 
@@ -383,8 +369,7 @@
     <!-- Datatables -->
     <script src="<?php echo base_url('assets/js/plugin/datatables/datatables.min.js') ?>"></script>
 
-    <!-- Bootstrap Notify -->
-    <script src="<?php echo base_url('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') ?>"></script>
+    
 
     <!-- jQuery Vector Maps -->
     <script src="<?php echo base_url('assets/js/plugin/jsvectormap/jsvectormap.min.js') ?>"></script>
