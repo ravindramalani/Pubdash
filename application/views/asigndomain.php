@@ -90,7 +90,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo base_url('Pubroute_controller/property'); ?>">
+                            <a href="<?php echo base_url('Pubroute_controller/asigndomain'); ?>">
                                 <i class="fas fa-layer-group"></i>
                                 <p>Asign Domain</p>
                             </a>
@@ -205,6 +205,35 @@
                         </div>
                     </form>
                 </div>
+                <div class="Domandata" style="text-align:center;">
+                    <h1>Domain Data</h1>
+                </div>
+                <table style="width:98%; margin:auto;">
+                    <tr>
+                        <th>ID</th>
+                        <th>Publisher ID</th>
+                        <th>Property</th>
+                        <th>Domain</th>
+                    </tr>
+                  
+                    <tr>
+                        <td>1</td>
+                        <td>publisher123</td>
+                        <td>1. example,</td>
+                        <td>1. example.com,<br>2. anotherdomain.com,<br> 3. viral.com</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td> example</td>
+                        <td>1. example.com,<br>2. anotherdomain.com,<br> 3. viral.com</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>publisher456</td>
+                        <td>anotherdomain.com</td>
+                    </tr>
+                </table>
             </div>
 
             <footer class="footer">

@@ -208,18 +208,15 @@
                 <table style="width:98%; margin:auto;">
                     <tr>
                         <th>ID</th>
-                        <th>Publisher ID</th>
                         <th>Domain</th>
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>publisher123</td>
-                        <td>1. example.com,<br>2. anotherdomain.com,<br> 3. viral.com</td>
+                        <td>1. example.com</td>
 
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>publisher456</td>
                         <td>anotherdomain.com</td>
                     </tr>
                 </table>
