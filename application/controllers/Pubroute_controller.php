@@ -85,5 +85,14 @@ public function asigndomain(){
 public function domains(){
     $this->load->view('domains');
 }
+
+// 20.06.2024,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+public function adminpayments(){
+    $this->load->view('adminpayments');
+}
+public function userpayments(){
+    $this->load->view('userpayments');
+}
 }
 ?>
